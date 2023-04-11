@@ -1,22 +1,21 @@
-POST http://localhost:5000/login
+POST http://localhost:3002/login
 Content-Type: application/json
 
 {
-    "username":"SAM",
-    "password":"1wer"
+    "username":"Sam",
+    "password":"1234"
 }
 ###
-POST http://localhost:5000/register
+POST http://localhost:3002/register
 Content-Type: application/json
 
 {
     "username":"UTEM",
     "password":"123456",
-    "name":"Sam",
+    "name":"UTeMkuGemilang",
     "email":"utem@mail.com"
 }
 ###
-GET http://localhost:5000/bye
+GET http://localhost:3000/admin
 ###
-GET http://localhost:5000/sam
-
+GET http://localhost:3000/sam
