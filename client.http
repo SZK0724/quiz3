@@ -16,6 +16,7 @@ Content-Type: application/json
     "email":"utem@mail.com"
 }
 ###
-GET http://localhost:3000/admin
+GET http://localhost:3002/admin
 ###
-GET http://localhost:3000/sam
+GET http://localhost:3002/bye
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbSIsInBhc3N3b3JkIjoiMTIzNCIsIm5hbWUiOiJTYW0gWmhpIEthbmciLCJlbWFpbCI6ImIwMjIxMjAwMjhAc3R1ZGVudC51dGVtLmVkdS5teSIsImlhdCI6MTY4MTM2OTQyMX0.kLHA54VYJIYbd2yu-LKSH0KBZzCQ5xAgTrl3D0clVdc
