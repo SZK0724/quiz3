@@ -19,6 +19,7 @@ app.post('/login', (req, res) => {
 
     let result=login(req.body.username,req.body.password)
 
+    let token=generateToken(result)
     res.send(result)     // This would send the JSON object back to the client in response to their request.
 })
 
@@ -31,7 +32,7 @@ app.get('/', (req, res) => {
     console.log("123") //  if use console.log in get/post, it will display the output in terminal not in client Respond!
 })
   
-app.get('/bye', (req, res) => {
+app.get('/bye', verifyToken,(req, res) => { //must use  correct token ( password,username) to access this GET
       res.send('bye bye')
      
 })
@@ -74,7 +75,32 @@ function register(reqUsername,reqPassword,reqName,reqEmail){
   })
   return "account created"
 }
+const jwt = require('jsonwebtoken');
+function generateToken(userData){
+  const token=jwt.sign(
+    userData,
+    'inipassword', //password to protect token
+    {expiresIn:60} //token will invalid at 60 sencods
+  );
 
+  console.log(token)
+}
+
+function verifyToken(req,res,next){
+  let header=req.headers.authorization  //if there any value ()token in authorization (header)
+  console.log(header)
+
+  let token=header.split(' ')[1]  //split it to 2 and take second number 
+
+  jwt.verify(token,'inipassword',function(err,decoded){
+    if (err){
+      res.send("invalid token")
+      
+    }
+    req.user=decoded
+    next()
+  });
+}
 let dbUsers=[
   {
       username:"Soo",
